@@ -7,4 +7,22 @@
 
 
 
-typedef struct {} {};
+typedef struct {
+  uint8_t *key_parts;
+  uint8_t key_size;
+  void *payload;
+
+} FixedSizeKey;
+
+
+
+// FixedSizeKey *create_unsorted_key_run(sorting_column, payload_column) {
+//
+//
+// }
+
+
+
+
+
+

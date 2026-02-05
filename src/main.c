@@ -1,4 +1,7 @@
 #include "sort_algorithm.c"
+#include "normalisation.c"
+#include "logging.c"
+
 
 
 #include <stdbool.h>
@@ -82,15 +85,20 @@ int main(int argc, char *argv[])
 
   int32_t val = 0x10;
   uint8_t bytes[sizeof(int32_t)];
-
   // Kopiert die rohen Bytes in das Array
   memcpy(bytes, &val, sizeof(val));
-
+  int payload_vals[4];
   // Zugriff auf Byte 0 (bei Little-Endian: 0x78)
   // printf("%d\n", bytes[0]);
   // printf("%d\n", bytes[1]);
   // printf("%d\n", bytes[2]);
   // printf("%d\n", bytes[3]);
+  FixedSizeKey test_key = {
+    .key_parts = bytes,
+    .key_size = 1,
+    .payload = &payload_vals,
+  };
+  log_key_ptr_pair(test_key);
   return 0;
 }
 
