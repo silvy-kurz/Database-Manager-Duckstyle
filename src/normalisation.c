@@ -6,10 +6,13 @@
 #include <math.h>
 
 
+typedef int32_t i32;
+typedef uint8_t u8;
+typedef uint64_t u64;
 
 typedef struct {
-  uint8_t *key_parts;
-  uint8_t key_size;
+  u64 *key_parts;
+  u8 key_size;
   void *payload;
 
 } FixedSizeKey;

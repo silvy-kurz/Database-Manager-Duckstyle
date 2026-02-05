@@ -11,6 +11,14 @@
 #include <stdlib.h>
 #include <math.h>
 
+typedef int32_t i32;
+typedef uint8_t u8;
+typedef uint64_t u64;
+
+
+
+
+
 int get_random_integer(int low, int high) {
     return low + arc4random_uniform(high - low + 1);
 }
@@ -83,10 +91,11 @@ int main(int argc, char *argv[])
 
 
 
-  int32_t val = 0x10;
-  uint8_t bytes[sizeof(int32_t)];
-  // Kopiert die rohen Bytes in das Array
-  memcpy(bytes, &val, sizeof(val));
+  u64 val = 0x10;
+  u64 parts[1] = {val};
+  // u8 bytes[sizeof(u64)];
+  // // Kopiert die rohen Bytes in das Array
+  // memcpy(bytes, &val, sizeof(val));
   int payload_vals[4];
   // Zugriff auf Byte 0 (bei Little-Endian: 0x78)
   // printf("%d\n", bytes[0]);
@@ -94,7 +103,7 @@ int main(int argc, char *argv[])
   // printf("%d\n", bytes[2]);
   // printf("%d\n", bytes[3]);
   FixedSizeKey test_key = {
-    .key_parts = bytes,
+    .key_parts = parts,
     .key_size = 1,
     .payload = &payload_vals,
   };
